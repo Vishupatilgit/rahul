@@ -10,7 +10,6 @@
           <include name="logoutFromApp"/>
           <include name="openBrowser"/>
           <include name="verifyUserID"/>
-          <include name="verifyAmol"/>
         </methods>
       </class> <!-- module1_Login_Test.KiteLoginTest -->
     </classes>

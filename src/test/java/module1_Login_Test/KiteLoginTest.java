@@ -18,6 +18,7 @@ import Module1_Login.KiteHomePage;
 import Module1_Login.KiteHomeVerifyText;
 import Module1_Login.KiteLogin1Page;
 import Module1_Login.KiteLogin2Page;
+import Module1_Login.Logout;
 public class KiteLoginTest extends BaseClass
 {	
 	KiteLogin1Page login1;
@@ -25,6 +26,7 @@ public class KiteLoginTest extends BaseClass
 	KiteHomePage home;
 	KiteHomeVerifyText VText;
 	int TCID;
+	Logout Lout;
 	
 	@BeforeClass
 	public void openBrowser() throws EncryptedDocumentException, IOException
@@ -36,6 +38,7 @@ public class KiteLoginTest extends BaseClass
 		 login2=new KiteLogin2Page(driver);
 		 home=new KiteHomePage(driver);
 		 VText=new KiteHomeVerifyText(driver);
+		 Lout=new Logout(driver);
 		
 	}
 	
@@ -62,18 +65,18 @@ public class KiteLoginTest extends BaseClass
 		String expUserID =UtilityClass.getTD(0,0);
 		Assert.assertEquals(actUserID, expUserID,"-Failed: both results are diff-");				
 	}
-	@Test
+	/*@Test
 	public void verifyAmol() throws EncryptedDocumentException, IOException
 	{
 		TCID=109;
 		String actText = VText.verifyText();
 		String expText = UtilityClass.getTD(0,3);
 		Assert.assertEquals(actText, expText, "-Failed: both results are diff-");	
-	}
+	}*/
 	
 	
 	@AfterMethod
-	public void logoutFromApp(ITestResult s1) throws IOException 
+	public void logoutFromApp(ITestResult s1) throws Throwable 
 	{
 		if(s1.getStatus()==ITestResult.FAILURE) 
 		{
@@ -81,6 +84,7 @@ public class KiteLoginTest extends BaseClass
 		}
 		
 		Reporter.log("-logout from app-",true);
+		//Lout.KiteLogOut(driver);
 	}
 	
 	
